@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>ユーザー登録リクエスト</title>
+</head>
+<body>
+    <form method="post" th:action="@{/request/send}" th:object="${registRequestForm}">
+        <div th:errors="*{email}">メアドエラー</div>
+        <label for="email">メールアドレス：</label>
+        <input id="email" type="text" th:field="*{email}"><br>
+        <button>送信</button>
+    </form>
+</body>
+</html>

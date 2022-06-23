@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>ユーザー登録</title>
+</head>
+<body>
+    <form method="post" th:action="@{/user/regist}" th:object="${userForm}">
+        <div th:errors="*{name}">名前エラー</div>
+        <label for="name">名前：</label>
+        <input id="name" type="text" th:field="*{name}"><br>
+
+        <div th:errors="*{nameKana}">名前かなエラー</div>
+        <label for="nameKana">名前（カナ）：</label>
+        <input id="nameKana" type="text" th:field="*{nameKana}"><br>
+
+        <div th:errors="*{zipCode}">郵便番号エラー</div>
+        <label for="zipCode">郵便番号：</label>
+        <input id="zipCode" type="text" th:field="*{zipCode}"><br>
+
+        <div th:errors="*{address}">住所エラー</div>
+        <label for="address">住所：</label>
+        <input id="address" type="text" th:field="*{address}"><br>
+
+        <div th:errors="*{telephone}">電話番号エラー</div>
+        <label for="telephone">電話番号：</label>
+        <input id="telephone" type="text" th:field="*{telephone}"><br>
+
+        <div th:errors="*{password}">パスワードエラー</div>
+        <label for="password">パスワード：</label>
+        <input id="password" type="password" th:field="*{password}"><br>
+
+        <div th:errors="*{confirmPassword}">確認パスワードエラー</div>
+        <label for="confirmPassword">確認パスワード：</label>
+        <input id="confirmPassword" type="password" th:field="*{confirmPassword}"><br>
+
+        <button>登録</button>
+    </form>
+</body>
+</html>
