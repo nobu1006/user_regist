@@ -1,3 +1,3 @@
 email,unique_key,del_flg
-nobuhiko.tobita@gmail.com,aaa,false
-nobuhiko.tobita@gmail.com,5af48f3b-468b-4ae0-a065-7d7ac70b37a8,false
+regist-test@example.com,aaa,false
+regist-test@example.com,5af48f3b-468b-4ae0-a065-7d7ac70b37a8,false

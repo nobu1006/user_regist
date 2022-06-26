@@ -1,2 +1,2 @@
 id,email,unique_key,regist_date,del_flg
-1,nobuhiko.tobita@gmail.com,aaa,2022-06-26,false
+1,regist-test@example.com,aaa,2022-06-26,false

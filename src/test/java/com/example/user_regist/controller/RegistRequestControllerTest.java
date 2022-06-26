@@ -42,6 +42,8 @@ class RegistRequestControllerTest {
 
     @BeforeAll
     static void setUpBeforeClass() throws Exception {
+        MockedStatic<UUID> mock = Mockito.mockStatic(UUID.class);
+        mock.when(UUID::randomUUID).thenReturn(uuid);
     }
 
     @AfterAll
@@ -88,7 +90,7 @@ class RegistRequestControllerTest {
     @DatabaseSetup("/RegistRequest/send03")
     void send03() throws Exception {
         MvcResult mvcResult = mockMvc.perform(post("/request/send")
-                        .param("email", "nobuhiko.tobita@gmail.com"))
+                        .param("email", "regist-test@example.com"))
                 .andExpect(view().name("/regist_request"))
                 .andReturn();
         // TODO: エラーメッセージチェック
@@ -108,11 +110,8 @@ class RegistRequestControllerTest {
     @ExpectedDatabase(value = "/RegistRequest/send04/expected", assertionMode = DatabaseAssertionMode.NON_STRICT)
     void send04() throws Exception {
 
-        MockedStatic<UUID> mock = Mockito.mockStatic(UUID.class);
-        mock.when(UUID::randomUUID).thenReturn(uuid);
-
         MvcResult mvcResult = mockMvc.perform(post("/request/send")
-                        .param("email", "nobuhiko.tobita@gmail.com"))
+                        .param("email", "regist-test@example.com"))
                 .andExpect(view().name("redirect:/request/toFinish"))
                 .andReturn();
     }
@@ -123,11 +122,8 @@ class RegistRequestControllerTest {
     @ExpectedDatabase(value = "/RegistRequest/send05/expected", assertionMode = DatabaseAssertionMode.NON_STRICT)
     void send05() throws Exception {
 
-        MockedStatic<UUID> mock = Mockito.mockStatic(UUID.class);
-        mock.when(UUID::randomUUID).thenReturn(uuid);
-
         MvcResult mvcResult = mockMvc.perform(post("/request/send")
-                        .param("email", "nobuhiko.tobita@gmail.com"))
+                        .param("email", "regist-test@example.com"))
                 .andExpect(view().name("redirect:/request/toFinish"))
                 .andReturn();
     }
