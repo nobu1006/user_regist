@@ -128,5 +128,17 @@ class RegistRequestControllerTest {
                 .andReturn();
     }
 
+    @Test
+    @DisplayName("リクエスト失敗。既にユーザー登録済み")
+    @DatabaseSetup("/RegistRequest/send06")
+    void send06() throws Exception {
+
+        MvcResult mvcResult = mockMvc.perform(post("/request/send")
+                        .param("email", "regist-test@example.com"))
+                .andExpect(view().name("redirect:/request/toFinish"))
+                .andReturn();
+    }
+
+
 
 }

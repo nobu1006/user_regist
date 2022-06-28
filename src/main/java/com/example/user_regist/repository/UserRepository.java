@@ -4,6 +4,7 @@ import com.example.user_regist.common.AppException;
 import com.example.user_regist.domain.RegistRequest;
 import com.example.user_regist.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -53,6 +54,33 @@ public class UserRepository {
         if (count != 1) {
             throw new AppException();
         }
+    }
+
+    public User findByEmail(String email) {
+        String sql = """
+            select
+                id
+                , name
+                , name_kana
+                , email
+                , zip_code
+                , address
+                , telephone
+            from users
+            where
+                email = :email
+            and
+                del_flg = false;
+        """;
+
+        SqlParameterSource params = new MapSqlParameterSource().addValue("email", email);
+
+        try {
+            return template.queryForObject(sql, params, USER_ROW_MAPPER);
+        } catch (DataAccessException e) {
+            return null;
+        }
+
     }
 
 }
