@@ -1,0 +1,5 @@
+id,email,unique_key,regist_date,del_flg
+1,regist-test@example.com,5af48f3b-468b-4ae0-a065-7d7ac70b37a8,2022-06-29,false
+2,regist-test@example.com,aaa,2022-05-29,false
+3,regist-test@example.com,bbb,2022-04-29,false
+4,regist-test@example.com,ccc,2022-03-29,false

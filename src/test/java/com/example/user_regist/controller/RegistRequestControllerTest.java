@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import com.example.user_regist.util.CsvDataSetLoader;
+import com.example.user_regist.util.StringReplaceUtil;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DbUnitConfiguration;
@@ -22,6 +23,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 
@@ -35,6 +39,7 @@ class RegistRequestControllerTest {
 
     private static final UUID uuid = UUID.fromString("5af48f3b-468b-4ae0-a065-7d7ac70b37a8");
 
+
     @Autowired
     private WebApplicationContext wac;
 
@@ -44,6 +49,9 @@ class RegistRequestControllerTest {
     static void setUpBeforeClass() throws Exception {
         MockedStatic<UUID> mock = Mockito.mockStatic(UUID.class);
         mock.when(UUID::randomUUID).thenReturn(uuid);
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        StringReplaceUtil.replace("###現在日時###", dtf.format(now));
     }
 
     @AfterAll

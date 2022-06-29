@@ -1,0 +1,2 @@
+id,email,unique_key,regist_date,del_flg
+1,regist-test@example.com,5af48f3b-468b-4ae0-a065-7d7ac70b37a8,###現在日時###,false

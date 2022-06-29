@@ -1,0 +1,2 @@
+name,name_kana,email,zip_code,address,telephone,del_flg
+テスト太郎,テストタロウ,regist-test@example.com,111-1111,新宿区新宿,03-3333-3333,false

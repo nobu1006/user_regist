@@ -31,7 +31,7 @@ public class MailClient {
 //        msg.setCc(); //Cc用
 //        msg.setBcc(); //Bcc用
         msg.setSubject("【Hogehogeシステム】ユーザー登録用URL送付");
-        msg.setText(MAIL_BODY.replaceAll("##UNIQUE_KEY##", uniqueKey));
+        msg.setText(MAIL_BODY.replace("##UNIQUE_KEY##", uniqueKey));
         mailSender.send(msg);
     }
     

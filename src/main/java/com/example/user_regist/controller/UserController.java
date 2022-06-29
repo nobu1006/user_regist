@@ -47,6 +47,10 @@ public class UserController {
         if (result.hasErrors()) {
             return "/regist_user";
         }
+        if (!userForm.getPassword().equals(userForm.getConfirmPassword())) {
+            result.rejectValue("password", null, "パスワードと確認パスワードが異なります");
+            return "/regist_user";
+        }
         User user = new User();
         BeanUtils.copyProperties(userForm, user);
         user.setEmail((String) session.getAttribute("email"));
